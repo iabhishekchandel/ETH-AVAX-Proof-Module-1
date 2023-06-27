@@ -96,8 +96,7 @@ contract SmartContract {
 
 ## Author
 
-Abhisek Bag
-@https://www.linkedin.com/in/abhisek-bag-09865421b/
+Abhisek Chandel- Chandigarh University
 
 ## License
 
