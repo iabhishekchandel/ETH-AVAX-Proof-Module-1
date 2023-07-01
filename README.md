@@ -1,103 +1,40 @@
-# smart-contract--using-solidity
 
-A smart contract is a self-executing agreement implemented on a blockchain platform, typically using a programming language called Solidity. Solidity is a high-level language designed specifically for writing smart contracts on the Ethereum blockchain, although it can also be used on other blockchain platforms.
-In Solidity, you can define smart contracts by writing code that specifies the contract's functionality, rules, and interactions with other contracts and users.
+# **ErrorHandling Smart Contract**
+The ErrorHandling smart contract demonstrates different error handling mechanisms in Solidity. It provides examples of using require, assert, and revert statements to handle errors and exceptions in Solidity contracts.
 
-# Error Handling in Solidity - Module1
+## Getting Started
+To use the ErrorHandling contract, you'll need to have a Solidity development environment set up. Make sure you have the following prerequisites installed:
+* Solidity compiler (version 0.8.x)
+## Usage
+1. Clone the repository or create a new Solidity file and copy the code from ErrorHandling.sol into it.
 
-In Solidity, you can define smart contracts by writing code that specifies the contract's functionality, rules, and interactions with other contracts and users.
-This Solidity smart contract demonstrates error handling techniques using the `require`, `assert`, and `revert` statements. Let's explore how error handling is implemented in the code!
+2. Compile the Solidity code using the Solidity compiler. Make sure to set the compiler version to 0.8.x.
 
-# Getting Started
+3. Deploy the contract to a compatible blockchain network, such as Ethereum.
 
+4. Once the contract is deployed, you can interact with it by calling the checkValue function, providing a uint256 value as an argument.
 
-# Executing Program
+5. The checkValue function will perform the following error handling operations:
 
+    * It uses the require statement to check if the value is greater than 0. If the condition is not met, it throws an exception with the error message "Value must be greater than 0."
 
-# The project will involve the following steps:
+    * It uses the assert statement to validate internal consistency. It multiplies the value by 2 and checks if the result is greater than or equal to the value. If the condition is false, it indicates an internal error, and the contract execution is reverted.
 
-# Setting up Remix:
+    * It uses the revert statement to revert the transaction and throw an exception if the value is equal to 42. The error message "The value cannot be 42" is provided in this case.
 
+6. The function will return true if none of the error conditions are met.
 
-1.Open the Remix IDE in your web browser.
-To run this program, you can use Remix, an online Solidity IDE. To get started, go to the Remix website at https://remix.ethereum.org/.
+## Error Handling Mechanisms
+The ErrorHandling contract demonstrates the following error handling mechanisms:
 
-2.Creating the smart contract:
-Start a new file in the code editor within Remix. Copy and paste the following code into the file:
+* require statement: Used to enforce a condition that must be met for the function to continue execution. It throws an exception if the condition is not met.
 
-''' // SPDX-License-Identifier: MIT pragma solidity 0.8.18;
+* assert statement: Used to check for conditions that should never be false. It is typically used to validate internal consistency. If the condition is false, it indicates an internal error, and the contract execution is reverted.
 
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-contract SmartContract {
-    uint public value;
-    
-    function setValue(uint _value) public {
-        // require statement
-        require(_value > 0, "Value must be greater than zero");
-        
-        // assert statement
-        assert(_value != 42);
-        
-        // set the value
-        value = _value;
-    }
-    
-    function setValueWithRevert(uint _value) public {
-        if (_value == 0) {
-            // revert statement
-            revert("Value cannot be zero");
-        }
-        
-        value = _value;
-    }
-}
-
-
-
-# Purpose
-
-
- It's important to note that require(), assert(), and revert() are used for different 
- 
-1.require() is typically used to validate input conditions or contract preconditions. It throws an error and reverts the transaction if the condition is not met.
-
-2assert() is used to check for internal errors in the contract. It should only be used for conditions that should never be false. If the condition is false, it indicates a 
- bug in the contract.
- 
-3.revert() is used to explicitly revert the transaction, usually due to a requirement violation or an exceptional condition.
- These error handling mechanisms help ensure the contract's integrity and provide meaningful feedback to users interacting with the contract.
-
-# Compiling the Contract:
-
-
-.Use the Remix compiler panel to compile your smart contract.
-.Select the appropriate compiler version pragma solidity ^0.8.0;
-
-
-# Deploying the Contract:
-
-
-1.Switch to the "Deploy & run transactions" tab in Remix.
-
-2.Deploy the compiled contract by clicking the "Deploy" button.
-
-
-# Interacting with the smart contract:
-
-1.Utilize the Remix IDE to interact with the deployed contract create.
-
-2.In the above smart contract, there are two functions: setValue() and setValueWithRevert(). Both functions take an input _value and set the value variable of the contract 
- to that input value. However, they use different error handling mechanisms.
- 
-3.Input the adress and value and click on the corresponding function buttons to execute our contract.
-
-
-## Author
-
-Abhisek Chandel- Chandigarh University
+* revert statement: Used to revert the current transaction and throw an exception with a specific error message.
 
 ## License
+The ErrorHandling smart contract is licensed under the MIT License.
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.This code is licensed under the MIT License. You can find the license text in the SPDX-License-Identifier comment at the beginning of the contract.
+## Contributing
+If you'd like to contribute to the ErrorHandling contract or have suggestions for improvement, feel free to open an issue or submit a pull request.
