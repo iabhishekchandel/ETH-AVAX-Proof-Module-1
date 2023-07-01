@@ -1,26 +1,43 @@
+ //write a smart contract that implements the require(), assert() and revert() statements.
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract SmartContract {
-    uint public value;
-    
-    function setValue(uint _value) public {
-        // require statement
-        require(_value > 0, "Value must be greater than zero");
-        
-        // assert statement
-        assert(_value != 42);
-        
-        // set the value
-        value = _value;
+contract HospitalManagement {
+    struct Patient {
+        uint id;
+        string name;
+        bool admitted;
     }
     
-    function setValueWithRevert(uint _value) public {
-        if (_value == 0) {
-            // revert statement
-            revert("Value cannot be zero");
+    mapping(uint => Patient) public patients;
+    uint public patientCount;
+    
+    
+    function admitPatient(uint _id, string memory _name) public {
+        // require statement
+        require(!patients[_id].admitted, "Patient is already admitted");
+        
+        // assert statement
+        assert(bytes(_name).length > 0);
+        
+        patients[_id] = Patient(_id, _name, true);
+        patientCount++;
+    }
+    
+    function dischargePatient(uint _id) public {
+        // require statement
+        require(patients[_id].admitted, "Patient is not admitted");
+        
+        patients[_id].admitted = false;
+        patientCount--;
+    }
+    
+    function updatePatientName(uint _id, string memory _name) public {
+        // revert statement
+        if (bytes(_name).length == 0) {
+            revert("Name cannot be empty");
         }
         
-        value = _value;
+        patients[_id].name = _name;
     }
 }
